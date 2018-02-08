@@ -12,15 +12,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Class where we will put different link to other activities in order to test stuff
+ * Please also take a look at the resources files - some are not being tested.
+ * ex linear layout : https://developer.android.com/guide/topics/ui/declaring-layout.html
+ * https://developer.android.com/guide/topics/ui/declaring-layout.html#CommonLayouts
+ *
+ * Activity concept : https://developer.android.com/guide/components/activities/intro-activities.html
+ */
 public class MainActivity extends AppCompatActivity {
 
     private String dialogVar;
 
     private DialogClickListener dListener;
 
+    // The onCreate() callback method in your Activity is called by the Android framework when your Activity is launched
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         // Click on button :
