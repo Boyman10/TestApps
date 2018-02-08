@@ -72,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        Logs :
+        Log.v("Étiquette", "Message à envoyer") pour vos messages communs.
+        Log.d("Étiquette", "Message à envoyer") pour vos messages de debug.
+        Log.i("Étiquette", "Message à envoyer") pour vos messages à caractère informatif.
+        Log.w("Étiquette", "Message à envoyer") pour vos avertissements.
+        Log.e("Étiquette", "Message à envoyer") pour vos erreurs.
+         */
 
 
         // Set Listener on DialogBox :
