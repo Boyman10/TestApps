@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">TestApp</string>
     <string name="btn_name">Click Dialog</string>
-
+    <string name="hello">Salut %1$s, carottes %2$d.</string>
 </resources>

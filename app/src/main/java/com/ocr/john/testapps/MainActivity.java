@@ -2,6 +2,7 @@ package com.ocr.john.testapps;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,8 +31,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+
+        // Testing Strings value resources file in english...
+        Resources res = getResources();
+        // Anaïs se mettra dans %1 et 22 ira dans %2, mais le reste changera en fonction de la langue du terminal !
+        String chaine = res.getString(R.string.hello, "Anaïs", 22);
+        Log.i("MainActivity", "ma chaine : " + chaine );
 
         // Click on button :
         Button mBut = findViewById(R.id.my_btn);
