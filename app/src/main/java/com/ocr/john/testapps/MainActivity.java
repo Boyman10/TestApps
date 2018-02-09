@@ -2,13 +2,20 @@ package com.ocr.john.testapps;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
     private String dialogVar;
 
     private DialogClickListener dListener;
+    // Notre liste de mots que connaîtra l'AutoCompleteTextView
+    private static final String[] COULEUR = new String[] {
+            "Bleu", "Vert", "Jaune", "Jaune canari", "Rouge", "Orange"
+    };
+
+    private Menu m = null;
+
+//Notez qu'on utilise Menu.FIRST pour indiquer le premier élément d'un menu
+    private final static int  MENU_DESACTIVER = Menu.FIRST;
+    private final static int  MENU_RETOUR = Menu.FIRST + 1;
 
     // The onCreate() callback method in your Activity is called by the Android framework when your Activity is launched
     @Override
@@ -38,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
         // Anaïs se mettra dans %1 et 22 ira dans %2, mais le reste changera en fonction de la langue du terminal !
         String chaine = res.getString(R.string.hello, "Anaïs", 22);
         Log.i("MainActivity", "ma chaine : " + chaine );
+
+
+
+
+
+
+
 
         // Click on button :
         Button mBut = findViewById(R.id.my_btn);
@@ -98,4 +122,62 @@ public class MainActivity extends AppCompatActivity {
         };
 
     }
+
+    /**
+     * To inflate, c'est désérialiser en français, et dans notre cas c'est transformer un objet qui n'est décrit qu'en XML en véritable objet qu'on peut manipuler.
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        //R.menu.menu est l'id de notre menu
+        inflater.inflate(R.menu.menu, menu);
+        m = menu;
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.item1:
+                //Dans le Menu "m", on active tous les items dans le groupe d'identifiant "R.id.group2"
+                m.setGroupEnabled(R.id.group2, true);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Trying on context menu -- SHOULD BE REPLACED BY ActionBar
+     * https://developer.android.com/design/patterns/actionbar.html
+     * @param menu
+     * @param vue
+     * @param menuInfo
+     */
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View vue, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, vue, menuInfo);
+        menu.add(Menu.NONE, MENU_DESACTIVER, Menu.NONE, "Supprimer cet élément");
+        menu.add(Menu.NONE, MENU_RETOUR, Menu.NONE, "Retour");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_DESACTIVER:
+                // start activity here
+                Intent intent = new Intent(this,LayoutActivity.class);
+                startActivity(intent);
+            case MENU_RETOUR:
+
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+
 }
