@@ -24,9 +24,7 @@
         <!-- https://developer.android.com/reference/android/Manifest.permission.html -->
 
         </activity>
-
-
-
+        <activity android:name=".LayoutActivity"></activity>
     </application>
 
 </manifest>
