@@ -2,6 +2,7 @@ package com.ocr.john.testapps;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     private DialogClickListener dListener;
 
+    // Other button to test intent
+    private Button mPasserelle = null;
+    public final static String AGE = "com.ocr.john.testpass.AGE";
+
+
     // The onCreate() callback method in your Activity is called by the Android framework when your Activity is launched
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Click on button :
         Button mBut = findViewById(R.id.my_btn);
+        mPasserelle = (Button) findViewById(R.id.passerelle);
 
         mBut.setOnClickListener(new View.OnClickListener() {
 
@@ -71,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        // SEcond activity launcher with intent :
+        mPasserelle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Le premier paramètre est le nom de l'activité actuelle
+                // Le second est le nom de l'activité de destination
+                Intent secondeActivite = new Intent(MainActivity.this, IntentExample.class);
+
+                // On rajoute un extra
+                secondeActivite.putExtra(AGE, 31);
+
+                // Puis on lance l'intent !
+                startActivity(secondeActivite);
+            }
+        });
+
 
         /*
         Logs :

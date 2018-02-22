@@ -20,5 +20,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_name"/>
-
+    <Button
+        android:id="@+id/passerelle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_name"/>
 </android.support.constraint.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 /**
  * Created by bob on 25/01/18.
+ * Pattern Observer with dialog box
  */
 
 public class MyDialogBox extends Dialog implements View.OnClickListener{
